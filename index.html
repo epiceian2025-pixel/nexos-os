@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXOS OS</title>
+<style>
+:root{--accent:#7c5cff;--glow:#24d8ff;--glass:rgba(13,18,38,.76);--text:#f4f6ff}
+*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:Inter,system-ui,Segoe UI,sans-serif;min-height:100vh;overflow:hidden;background:#080d1c}
+.wallpaper{position:fixed;inset:0;background:radial-gradient(ellipse at 75% 20%,color-mix(in srgb,var(--accent) 48%,transparent),transparent 38%),radial-gradient(ellipse at 20% 80%,color-mix(in srgb,var(--glow) 30%,transparent),transparent 38%),linear-gradient(135deg,#080d1c,#111a35 55%,#080d1c);z-index:-2}
+.wallpaper:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(transparent,#000)}
+.top{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:rgba(4,8,20,.45);backdrop-filter:blur(18px);border-bottom:1px solid #ffffff18;font-size:12px;letter-spacing:.08em}
+.brand{font-weight:900;letter-spacing:.2em}.brand b{color:var(--glow)}.status{color:#b8c5e8}
+.desktop{height:calc(100vh - 104px);padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;flex-wrap:wrap;align-content:flex-start}
+.app-icon{width:92px;height:92px;border:1px solid #ffffff20;background:rgba(255,255,255,.055);border-radius:20px;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:.2s;backdrop-filter:blur(12px);font:inherit}
+.app-icon:hover{transform:translateY(-4px);border-color:var(--glow);box-shadow:0 0 24px color-mix(in srgb,var(--accent) 50%,transparent);background:rgba(255,255,255,.11)}
+.glyph{font-size:30px;filter:drop-shadow(0 0 9px var(--accent))}.app-icon span:last-child{font-size:12px;font-weight:650}
+.taskbar{position:fixed;bottom:0;left:0;right:0;height:62px;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(5,9,22,.78);border-top:1px solid #ffffff20;backdrop-filter:blur(22px)}
+.taskbar button{border:1px solid #ffffff1c;background:#ffffff0c;color:white;border-radius:14px;width:42px;height:42px;font-size:20px;cursor:pointer}.taskbar button:hover{background:#ffffff20}
+.clock{position:absolute;right:18px;font-size:12px;color:#cbd5ef;text-align:right}
+.window{position:fixed;top:12%;left:50%;transform:translateX(-50%);width:min(720px,92vw);height:min(570px,72vh);background:var(--glass);border:1px solid color-mix(in srgb,var(--accent) 65%,white 10%);border-radius:18px;box-shadow:0 25px 90px #0009,0 0 35px color-mix(in srgb,var(--accent) 18%,transparent);backdrop-filter:blur(25px);display:none;overflow:hidden}
+.winhead{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border-bottom:1px solid #ffffff18;font-weight:750;letter-spacing:.04em}.wincontrols{display:flex;gap:8px}.wincontrols button{width:27px;height:27px;border:0;border-radius:8px;background:#ffffff15;color:white;cursor:pointer}.winbody{padding:20px;height:calc(100% - 48px);overflow:auto}
+.panel{background:#ffffff0a;border:1px solid #ffffff16;border-radius:14px;padding:16px;margin:10px 0}.muted{color:#b9c4df;font-size:13px;line-height:1.5}
+.action{border:1px solid color-mix(in srgb,var(--accent) 65%,white 10%);background:color-mix(in srgb,var(--accent) 28%,transparent);color:white;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700;margin:5px 5px 5px 0}.action:hover{filter:brightness(1.2)}
+input,select{background:#0c142b;color:white;border:1px solid #ffffff30;padding:10px;border-radius:9px;max-width:100%}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}.swatch{width:34px;height:34px;border-radius:50%;border:2px solid white;cursor:pointer}
+a{color:#8fe8ff}h2{margin:0 0 8px} .hero{font-size:27px;font-weight:850;letter-spacing:-.04em}.hero em{color:var(--glow);font-style:normal}
+@media(max-width:600px){.desktop{padding:15px;gap:9px}.app-icon{width:78px;height:78px}.window{top:8%;height:78vh}.clock{font-size:10px}.top{padding:0 10px}}
+</style>
+</head>
+<body>
+<div class="wallpaper"></div>
+<header class="top"><div class="brand">NEXOS <b>OS</b></div><div class="status">● SYSTEM ONLINE &nbsp; | &nbsp; WEB DESKTOP</div></header>
+<main class="desktop">
+<button class="app-icon" onclick="openApp('games')"><span class="glyph">🎮</span><span>Games</span></button>
+<button class="app-icon" onclick="openApp('browser')"><span class="glyph">🌐</span><span>Browser</span></button>
+<button class="app-icon" onclick="openApp('movies')"><span class="glyph">▶</span><span>Movies</span></button>
+<button class="app-icon" onclick="openApp('settings')"><span class="glyph">⚙️</span><span>Settings</span></button>
+<button class="app-icon" onclick="openApp('cloak')"><span class="glyph">🎓</span><span>Tab Cloak</span></button>
+</main>
+<nav class="taskbar">
+<button title="Games" onclick="openApp('games')">🎮</button><button title="Browser" onclick="openApp('browser')">🌐</button><button title="Movies" onclick="openApp('movies')">▶</button><button title="Settings" onclick="openApp('settings')">⚙</button>
+<div class="clock" id="clock"></div>
+</nav>
+<section class="window" id="window">
+<div class="winhead"><span id="winTitle">NEXOS APP</span><div class="wincontrols"><button onclick="minimize()">—</button><button onclick="maximize()">□</button><button onclick="closeApp()">×</button></div></div>
+<div class="winbody" id="winBody"></div>
+</section>
+<script>
+const win=document.getElementById('window'), body=document.getElementById('winBody'), title=document.getElementById('winTitle');
+const views={
+games:`<div class="hero">GAME <em>HUB</em></div><p class="muted">Your game library starts here. Add your own HTML games to the Games folder and link them from this hub.</p><div class="panel"><b>🎮 Your library</b><p class="muted">No games installed yet.</p><p class="muted">When you have game files, place them in a folder in this GitHub repository and add links here.</p></div>`,
+browser:`<div class="hero">WEB <em>BROWSER</em></div><p class="muted">Enter a website address. Some websites block being displayed inside another site; use Open in new tab for those.</p><input id="site" style="width:min(470px,100%)" placeholder="https://example.com"><button class="action" onclick="browse()">Open</button><div class="panel"><p class="muted" id="browserHint">Websites may prevent embedded viewing. The Open button can launch the address in a new tab.</p><iframe id="frame" title="Website preview" style="width:100%;height:260px;border:1px solid #ffffff22;border-radius:10px;background:white"></iframe></div>`,
+movies:`<div class="hero">MOVIE <em>ZONE</em></div><p class="muted">Launch streaming services from their official websites. A subscription may be required.</p><div class="panel"><h2>Netflix</h2><p class="muted">Open Netflix in a new tab and sign in with your account.</p><button class="action" onclick="window.open('https://www.netflix.com/','_blank','noopener')">Open Netflix ↗</button></div><div class="panel"><p class="muted">NEXOS does not provide paid movies or bypass subscriptions.</p></div>`,
+settings:`<div class="hero">SYSTEM <em>SETTINGS</em></div><div class="panel"><b>Accent color</b><p class="muted">Choose your desktop glow color.</p><div class="swatches"><button class="swatch" style="background:#7c5cff" onclick="setTheme('#7c5cff','#24d8ff')"></button><button class="swatch" style="background:#00b894" onclick="setTheme('#00b894','#7dffce')"></button><button class="swatch" style="background:#ff477e" onclick="setTheme('#ff477e','#ffb86b')"></button><button class="swatch" style="background:#268cff" onclick="setTheme('#268cff','#65e7ff')"></button><button class="swatch" style="background:#f0a52b" onclick="setTheme('#f0a52b','#ffe28a')"></button></div></div><div class="panel"><b>Custom color</b><p class="muted">Pick your own accent.</p><input type="color" value="#7c5cff" onchange="setTheme(this.value,'#24d8ff')"></div><div class="panel"><b>Wallpaper mood</b><p class="muted">Switch the desktop background style.</p><button class="action" onclick="document.querySelector('.wallpaper').style.filter='hue-rotate(70deg)'">Aurora</button><button class="action" onclick="document.querySelector('.wallpaper').style.filter='hue-rotate(180deg)'">Cyber</button><button class="action" onclick="document.querySelector('.wallpaper').style.filter='none'">Default</button></div>`,
+cloak:`<div class="hero">TAB <em>CLOAK</em></div><p class="muted">This changes the title and icon shown for this NEXOS page as a visual theme only. It does not hide browsing activity, change your browser history, or make the page actually become Google Classroom.</p><div class="panel"><b>Classroom-style appearance</b><p class="muted">Apply a Classroom-inspired label and icon to this page.</p><button class="action" onclick="document.title='Classes';document.querySelector('.brand').innerHTML='CLASSROOM <b>PORTAL</b>';alert('Classroom-style label applied to this page. This is cosmetic only.')">Apply appearance</button><button class="action" onclick="document.title='NEXOS OS';document.querySelector('.brand').innerHTML='NEXOS <b>OS</b>'">Restore NEXOS</button></div>`
+};
+function openApp(name){title.textContent=name.toUpperCase();body.innerHTML=views[name];win.style.display='block'}
+function closeApp(){win.style.display='none'}
+function minimize(){win.style.display='none'}
+function maximize(){win.style.width='96vw';win.style.height='84vh';win.style.top='7%'}
+function setTheme(a,g){document.documentElement.style.setProperty('--accent',a);document.documentElement.style.setProperty('--glow',g)}
+function browse(){let u=document.getElementById('site').value.trim();if(!u)return;if(!/^https?:\/\//i.test(u))u='https://'+u;window.open(u,'_blank','noopener');document.getElementById('browserHint').textContent='Opened in a new tab. Some sites block embedded previews.'}
+function tick(){document.getElementById('clock').innerHTML=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})+'<br>'+new Date().toLocaleDateString()}tick();setInterval(tick,1000);
+</script>
+</body></html>
